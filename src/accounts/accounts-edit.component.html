@@ -1,0 +1,49 @@
+<div class="row">
+  <div class="content-header">
+    <h1>Contas bancárias <small>Edição de contas</small></h1>
+    <div class="grey-text">
+      <small>
+        <a href="">iFinance</a> >
+        <a [routerLink]="['/accounts']">Suas contas</a> >
+        <span>Edição de contas</span>
+      </small>
+    </div>
+  </div>
+
+  <div class="card col s12">
+    <div class="card-content">
+      <div class="card-title">Edição de contas</div>
+      <form class="row" autocomplete="off" (submit)="save(account.id)">
+        <div class="input-field col s6">
+          <input name="title" [(ngModel)]="account.title" type="text" id="title" class="validate" placeholder="Como você prefere identificar esta conta?" required>
+          <label for="title" class="active">Título da conta</label>
+        </div>
+        <div class="input-field col s6">
+          <input name="balance_initial" [(ngModel)]="account.balance_initial" type="text" id="title" class="validate" placeholder="Qual o valor inicial desta conta?" required>
+          <label for="title" class="active">Valor inicial</label>
+        </div>
+        <div class="input-field col s6">
+          <select name="bank_id" [(ngModel)]="account.bank_id" class="browser-default" >
+            <option *ngFor="let bank of banks" [value]="bank.id">{{bank.title}} - {{bank.code}}</option>
+          </select>
+          <label for="" class="active">Qual seu banco?</label>
+        </div>
+        <div class="input-field col s6">
+          <input name="agency" [(ngModel)]="account.agency" type="number"  id="agency" class="validate" placeholder="Qual o número da sua agencia?" required>
+          <label for="agency" class="active">Número da agência</label>
+        </div>
+        <div class="input-field col s6">
+          <input name="account_number" [(ngModel)]="account.account_number" type="number" id="account_number" class="validate" placeholder="Qual o número da sua conta?" required>
+          <label for="accont_number" class="active">Número da conta</label>
+        </div>
+        <div class="input-field col s12">
+          <input type="submit"class="waves-effect waves-light btn-large blue-grey darken-4" value="salvar">
+        </div>
+      </form>
+
+    </div>
+    <div class="card-action">
+      <a [routerLink]="['/accounts/' + account.id]">Voltar</a>
+    </div>
+  </div>
+</div>

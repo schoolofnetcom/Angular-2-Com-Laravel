@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="content-header">
+    <h1>Contas bancárias <small>Visualizando detalhes</small></h1>
+    <div class="grey-text">
+      <small>
+        <a href="">iFinance</a> >
+        <a [routerLink]="['/accounts']">Suas contas</a> >
+        <span>Visualização de dados</span>
+      </small>
+    </div>
+  </div>
+
+  <div class="card col s12">
+    <div class="card-content">
+      <div class="row">
+        <div class="col s9">
+          <div class="card-title">Detalhes da conta</div>
+          <p>Agência: {{ account.agency }} / Conta: {{ account.account_number }}</p>
+          <p>Banco: {{ account.bank.title }} - {{ account.bank.code }}</p>
+          <p>Valor inicial da conta:  {{ account.balance_initial }}</p>
+        </div>
+        <div class="col s3 right-align">
+          <p>Saldo: <span class="btn disabled"> {{ account.balance }}</span></p>
+        </div>
+      </div>
+    </div>
+    <div class="card-action">
+      <a [routerLink]="['/accounts']">Voltar</a>
+      <a [routerLink]="['/accounts/' + account.id + '/edit']">Editar</a>
+      <a (click)="delete(account.id)">Remover</a>
+    </div>
+  </div>
+</div>
